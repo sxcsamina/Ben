@@ -41,6 +41,7 @@ async def ben(message: Message):
         print(f"Error: {e}")
 
 async def main():
+    
     print("Bot is currently running...")
     await dp.start_polling(bot)
 
