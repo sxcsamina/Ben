@@ -38,17 +38,18 @@ async def alive():
         logger.info("Render link not found")
         return
 
+    logger.info("Up time task is active")
+
+    session = ClientSession()
+
     while True:
         await sleep(1 * 60)
         try:
-            session = ClientSession()
             await session.get(f"{RENDER_URL}/healthz")
             logger.debug(f"Pinged {RENDER_URL} to stay alive")
             await session.close()
         except Exception as e:
             logger.error(f"Keep-alive error: {e}")
-
-    logger.info("Up time task is active")
 
 async def poke():
 
